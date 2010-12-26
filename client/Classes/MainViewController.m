@@ -81,7 +81,7 @@
 - (void)postPhoto: (NSData *)imageData
 {
   NSString *boundary = @"----FOO";
-  NSString *host = @"http://192.168.0.122:8080/instance/realitycheck";
+  NSString *host = @"http://192.168.0.122:8080/";
   NSURL *url = [NSURL URLWithString:host];
   NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
   [req setHTTPMethod:@"POST"];
@@ -96,7 +96,7 @@
   [postBody appendData:[@"Content-Disposition: form-data; name=\"some_name\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
   [postBody appendData:[@"some_value" dataUsingEncoding:NSUTF8StringEncoding]];
   [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-  [postBody appendData:[@"Content-Disposition: form-data; name=\"image_file\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+  [postBody appendData:[@"Content-Disposition: form-data; name=\"image_file\"; filename=\"test.jpeg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
   [postBody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
   [postBody appendData:imageData];
   [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
