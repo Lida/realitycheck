@@ -1,0 +1,8 @@
+<h1>File Upload</h1>
+<%= form_tag ({:action => 'ocr'}, 
+                        :multipart => true) do -%>
+<p><label for="upload_file">Select File</label> : 
+<%= file_field_tag 'image_file' %></p>
+<%= submit_tag "Upload" %>
+<% end -%>
+
